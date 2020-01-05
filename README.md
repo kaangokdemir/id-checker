@@ -29,5 +29,5 @@ npm run lint
 
 ### For contribition
 ```
-Please reach me from <email@example.com>
+Please reach me from using [email](mailto:kaangokdemir01@gmail.com]
 ```
