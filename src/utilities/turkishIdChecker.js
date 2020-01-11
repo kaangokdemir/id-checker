@@ -3,8 +3,15 @@ let checkId = payload => {
     display: '',
     status: false
   };
+  if (typeof payload == 'number') {
+    payload = payload.toString();
+  }
+  if (typeof payload != 'string') {
+    result.display = 'Unaccepted Type';
+    return result;
+  }
   if (payload.match(/^[0-9]+$/) == null) {
-    result.display = 'ID should be a number.';
+    result.display = 'ID should only contain numbers.';
   } else if (payload.length !== 11) {
     result.display = 'ID should be 11 digits length';
   }

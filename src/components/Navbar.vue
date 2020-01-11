@@ -2,12 +2,12 @@
   nav.navbar.is-light(role='navigation' aria-label='main navigation')
     .navbar-brand
       a.navbar-item(href='/')
-        img(src='https://bulma.io/images/bulma-logo.png' width='112' height='28')
+        img(src='@/assets/id-logo.svg' width='242' height='28')
       a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
         span(aria-hidden='true')
         span(aria-hidden='true')
         span(aria-hidden='true')
-    #navbarBasicExample.navbar-menu
+    //- #navbarBasicExample.navbar-menu
       .navbar-start
         a.navbar-item
           | Home

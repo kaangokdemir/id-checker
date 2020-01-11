@@ -17,22 +17,22 @@
         table.table.is-fullwidth.is-hoverable.is-narrow.is-bordered
           thead
             tr
-              th  No
-              th  Value
-              th  Message
-              th  Status
+              th(style="width: 10%")  No
+              th(style="width: 10%")  Value
+              th(style="width: 70%")  Message
+              th(style="width: 10%")  Status
           tbody(v-for='(result, index) in results', :key='result[index]')
             tr
-              td {{index+1}}
-              td {{result.value}}
-              td {{result.display}}
-              td
+              td(style="width: 10%") {{index+1}}
+              td(style="width: 10%") {{result.value}}
+              td(style="width: 70%") {{result.display}}
+              td(style="width: 10%")
                 b-tag(:type='result.status ? "is-success" : "is-danger"') {{result.status}}
 
 </template>
 
 <script>
-import checkId from "@/utilities/turkishIdChecker";
+let checkId = require("turkish-id-checker");
 export default {
   data() {
     return {
@@ -55,13 +55,15 @@ export default {
     },
     check() {
       this.$refs.checker.focus();
-      let result = checkId(this.idNumber);
-      result.value = this.idNumber;
-      this.results.push(result);
-      if (result.status) {
-        this.idNumber = "";
+      if (this.idNumber.length) {
+        let result = checkId(this.idNumber);
+        result.value = this.idNumber;
+        this.results.push(result);
+        if (result.status) {
+          this.idNumber = "";
+        }
+        this.snackbar(result.display);
       }
-      this.snackbar(result.display);
     }
   }
 };
@@ -70,5 +72,8 @@ export default {
 <style lang="scss">
 #checker {
   margin: 2vh;
+  td, th{
+    text-align: center;
+  }
 }
 </style>
